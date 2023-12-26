@@ -1,0 +1,91 @@
+
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "Your API"
+    },
+    "paths": {
+      "/add": {
+        "post": {
+          "summary": "Add a Consommation",
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Consommation"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successfully added"
+            },
+            "500": {
+              "description": "Can't add empty todo"
+            }
+          }
+        }
+      },
+      "/total": {
+        "get": {
+          "summary": "Calculate total for today",
+          "responses": {
+            "200": {
+              "description": "Successfully calculated"
+            },
+            "500": {
+              "description": "Failed to calculate total value"
+            }
+          }
+        }
+      },
+      "/totalType": {
+        "post": {
+          "summary": "Calculate total by type",
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/ConsommationType"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successfully calculated"
+            },
+            "500": {
+              "description": "Failed to calculate total value"
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "Consommation": {
+        "type": "object",
+        "properties": {
+          "valeur": {
+            "type": "number"
+          },
+          "type": {
+            "type": "string"
+          }
+        }
+      },
+      "ConsommationType": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+  
